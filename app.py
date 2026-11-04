@@ -87,7 +87,7 @@ with st.container(key="kopf"):
     st.title("🌳 Greedy und Tausch: warum die Regel gewinnt")
 st.markdown(
     """
-Ein Leitungsnetz soll alle Standorte verbinden, so billig wie möglich. **Greedy** ordnet die möglichen Leitungen nach Kosten und nimmt jede, die keinen Kreis schließt (**Kruskal**). Auf dem Spannbaum ist das optimal, und zwar auf eine Art, die man **prüfen** kann: Die Regel kennt nur die **Reihenfolge** der Kosten, sie ist für **jede** Größe gleichzeitig optimal, und **Tauschen** führt von jedem Baum zum Optimum. Kommt eine einzige Nebenbedingung dazu (höchstens drei Leitungen je Standort), bleibt die Regel dieselbe, doch diese Eigenschaften gelten nicht mehr verlässlich.
+Ein Leitungsnetz soll alle Standorte verbinden, so billig wie möglich. **Greedy** ordnet die möglichen Leitungen nach Kosten und nimmt jede, die keinen Kreis schließt (**Kruskal**). Auf dem Spannbaum ist das optimal, und zwar auf eine Art, die man **prüfen** kann: Die Regel kennt nur die **Reihenfolge** der Kosten, sie ist für **jede** Größe gleichzeitig optimal, und **Tauschen** führt von jedem Baum zum Optimum. Kommt eine einzige Nebenbedingung dazu (höchstens drei Leitungen je Standort, an einem Depot, das sonst viele Leitungen wollte), bleibt die Regel dieselbe, doch diese Eigenschaften können kippen.
 
 Dies ist das **erste Stück** der Reihe „Matroide und Submodularität“. Weiter unten: fünf Experimente (🔬), eine **Spielwiese** zum Tauschen von Hand, **🚧 Wo die Annahmen enden** und der Expander **📐 Mathematische Formulierung**.
 """
@@ -362,7 +362,7 @@ st.markdown(
 |---|---|---|
 | **Die Nebenbedingung ist „kein Kreis“** | Mit einer Gradschranke findet dieselbe Regel nicht immer den besten Baum und manchmal gar keinen Spannbaum (Experiment 4); die Tausch-Lokalsuche bleibt hängen. | Stück 2 (wo Greedy scheitert) und Stück 3 (das Matroid) |
 | **Kleine Pläne (bis 9 Standorte, höchstens 16 mögliche Leitungen)** | Das Aufzählen aller Bäume ist hier die Prüfung. Für große Pläne ist „Greedy ist optimal“ ein Satz, den diese Demo nicht an großen Instanzen misst. | Stück 5 (Greedy genau dann optimal) |
-| **Die drei Eigenschaften sind Beobachtungen** | Sie gelten auf allen gemessenen Plänen ohne Schranke; ein Beweis sind sie nicht. | Stück 5 |
+| **Die drei Eigenschaften sind Beobachtungen** | Sie gelten auf allen gemessenen Plänen ohne Schranke (Eigenschaft 1 an 40 Plänen, 2 und 3 am gewählten Plan bzw. in 120 Läufen). Die Messung ersetzt keinen Beweis; die drei Sätze sind bekannt. | Stück 5 |
 | **Ein Plantyp, eine Art Nebenbedingung** | Zufällige Standorte, Depot in der Mitte, Kosten aus Entfernungen; nur die Gradschranke. Andere Nebenbedingungen (Farben, Kapazitäten) kommen in späteren Stücken. | Stück 2, 7 |
 | **Gleichstände** | Bei gleichen Kosten gibt es oft mehrere beste Bäume; Greedy findet einen davon. | `kruskal-demo` (Gleichstände) |
 """

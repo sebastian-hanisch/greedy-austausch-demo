@@ -22,7 +22,7 @@ Der Grund ist das **Tauschargument**: Legt man zu einem Spannbaum eine Leitung d
 - **Hook verschoben:** Der Plan (`PLAN-01-greedy-spannbaum.md` im Planungsordner der Linie) nahm als Hook „Greedy ist in 100 % der Fälle optimal“. Das stimmt, ist aber doppelt zu `kruskal-demo`. Der Hook sind die drei Fingerabdrücke und ihr Kippen bei einer Gradschranke.
 - **Spielwiese ohne Kostenbearbeitung:** Der Plan sah vor, Kanten und Kosten von Hand zu setzen. Die Spielwiese tauscht nur an den Kosten des Plans; eine eigene Kostentabelle ist nicht gebaut (siehe „Bewusst nicht umgesetzt“).
 - **Gradschranke 1 (Paarung) nicht in der App:** Die Vormessung hatte auch Wälder mit höchstens einer Leitung je Standort geprüft. Die App kennt nur die Schranken 3 und 2, weil bei Schranke 1 kein Spannbaum mehr möglich ist (mehr als zwei Standorte).
-- **Nicht neu, nur anders eingeordnet:** Dass Kruskal und Prim mit Gradgrenze scheitern (im Wald enden, obwohl ein Baum existiert) und dass Grad 3 auf gleichverteilten Punkten fast nichts kostet, steht schon in [constrained-mst-demo](../constrained-mst-demo). Hier ist es Teil des Kippens der drei Fingerabdrücke; die billige Nabe ist eine bewusste Konstruktion, damit die Schranke 3 überhaupt bindet (ohne Nabe bindet sie auf den 40 festen Plänen nie).
+- **Nicht neu, nur anders eingeordnet:** Dass Kruskal und Prim mit Gradgrenze scheitern (im Wald enden, obwohl ein Baum existiert) und dass Grad 3 auf gleichverteilten Punkten fast nichts kostet, steht schon in [constrained-mst-demo](../constrained-mst-demo). Hier ist es Teil des Kippens der drei Fingerabdrücke; die billige Nabe ist eine bewusste Konstruktion, damit die Schranke 3 überhaupt bindet (ohne Nabe bindet sie bei 7 Standorten auf den 40 festen Plänen nie, bei 9 Standorten in 2 von 40).
 - **Instanzen anders als in der Vormessung:** Die Vormessung nahm zufällige Kosten; die App nimmt Kosten aus Entfernungen auf einem Plan mit Depot in der Mitte. Zahlen aus der Vormessung stehen deshalb hier nicht.
 
 ## Modell
@@ -59,7 +59,7 @@ Alle Zahlen stehen in `tests/test_claims.py` und werden dort mit den Funktionen 
 ## Ehrliche Grenzen
 
 - **Kleine Pläne.** Bis 9 Standorte und höchstens 16 mögliche Leitungen, damit sich alle Bäume aufzählen lassen. „Greedy ist optimal“ ist ein Satz; die Demo misst ihn nur an diesen Plänen und beweist ihn nicht.
-- **Die drei Fingerabdrücke sind Beobachtungen.** Auf allen gemessenen Plänen ohne Schranke gilt jeder; ein Beweis ist das nicht.
+- **Die drei Fingerabdrücke sind Beobachtungen.** Auf allen gemessenen Plänen ohne Schranke gilt jeder (Fingerabdruck 1 an 40 Plänen, 2 und 3 am Standardplan bzw. in 120 Läufen). Die Messung ersetzt keinen Beweis; die drei Sätze sind bekannt.
 - **Eine Art Nebenbedingung.** Nur die Gradschranke, nur die Werte 3 und 2. Andere Nebenbedingungen (Farben, Kapazitäten) und andere Verfahren unter einer Schranke (etwa ein klügerer Greedy oder lokale Suche mit mehr Nachbarschaft) sind nicht gemessen. „Greedy mit Gradschranke“ ist die Regel, die die Demo vorführt, nicht jedes Verfahren für das gradbeschränkte Problem.
 - **Anteile sind Zählungen über 40 feste Pläne,** nicht Raten für alle Pläne. Pläne ohne Spannbaum unter der Schranke zählen nicht mit; die Tausch-Läufe starten von gleichverteilt gezogenen zulässigen Bäumen, drei je Plan.
 - **Der Baum der billigsten Wege** ist ein einziges Gegenbeispiel zu Fingerabdruck 1 (ein Baumproblem, dessen Lösung von den Kostenwerten abhängt), kein Vergleich mit allen Verfahren.
@@ -75,7 +75,7 @@ Alle Zahlen stehen in `tests/test_claims.py` und werden dort mit den Funktionen 
 - **Verdikte und Presets:** jeder Zweig und jede Zahl der Verdikte an handgesetzten Werten; jedes Preset zeigt den versprochenen Effekt (`tests/test_verdicts.py`, `tests/test_presets.py`).
 - **Zahlen aus dieser README:** `tests/test_claims.py`.
 - **Oberfläche:** AppTest-Rauchtest (jeder Button, jeder Regler an den Grenzen), Experimente und Spielwiese, Permalink, PDF; Layout (Kopf, Schnellstart, Hervorhebung) und Footer.
-- **Umfang:** 119 Tests (`pytest --collect-only -q tests`), seriell etwa zwei Minuten.
+- **Umfang:** 119 Tests (`pytest --collect-only -q tests`), seriell rund 80 Sekunden (gemessen).
 
 ## Dateistruktur
 
