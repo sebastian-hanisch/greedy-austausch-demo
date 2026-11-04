@@ -1,7 +1,6 @@
 # Greedy und Tausch: warum die Regel gewinnt – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-greedy-austausch-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-greedy-austausch-demo.streamlit.app/)**
 
 Erstes Stück (Wurzel) der Reihe **Matroide und Submodularität** (Bereich Kombinatorik) in der „Konzepte“-Reihe für die Website „Sebastian Hanisch – Operations Research und Machine Learning“. Ein Leitungsnetz soll alle Standorte verbinden, so billig wie möglich: **Greedy** (Kruskal) ordnet die möglichen Leitungen nach Kosten und nimmt jede, die keinen Kreis schließt. Die Demo fragt nicht, *dass* das optimal ist (das zeigt [kruskal-demo](../kruskal-demo) mit Schnitt- und Kreis-Eigenschaft), sondern *woran man es erkennt* und *was kippt*, wenn eine einzige Nebenbedingung dazukommt.
 
