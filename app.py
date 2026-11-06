@@ -93,6 +93,17 @@ Dies ist das **erste Stück** der Reihe „Matroide und Submodularität“. Weit
 """
 )
 
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/greedy-austausch-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Ein Leitungsnetz soll alle Standorte verbinden, so billig wie möglich. Die **Greedy-Regel** (nach Kruskal) ordnet die möglichen Leitungen nach Kosten und nimmt der Reihe nach jede, die keinen Rundweg schließt. Die Demo fragt nicht, *dass* das optimal ist, sondern *woran man es erkennt*: Die Regel kennt nur die Reihenfolge der Kosten, sie ist für jede Größe des Teilnetzes zugleich die beste, und Tauschen führt von jedem Netz zum billigsten. Dann kommt eine Nebenbedingung dazu, eine Höchstzahl an Leitungen je Standort. Die Regel bleibt dieselbe, aber die drei Eigenschaften können kippen. Die Demo misst, wann und wie oft das geschieht.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/greedy-austausch-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
+
 with st.expander("So funktioniert Greedy und Tausch", expanded=True):
     st.markdown(
         """
@@ -371,6 +382,23 @@ st.markdown(
 st.markdown("---")
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/greedy-austausch-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben sind Standorte und mögliche Leitungen mit ganzzahligen Kosten. Gesucht ist ein Spannbaum mit kleinsten Gesamtkosten, auf Wunsch mit höchstens $d$ Leitungen je Standort.
+
+| Symbol | Bedeutung |
+|---|---|
+| $V$, $E$ | Standorte und mögliche Leitungen |
+| $c_e$ | Kosten der Leitung $e$ (ganze Zahl) |
+| $T$ | Spannbaum: verbindet alle Standorte, ohne Kreis, mit $\lvert V \rvert - 1$ Leitungen |
+| $d$ | Höchstzahl der Leitungen je Standort (3 oder 2; ohne Angabe keine Grenze) |
+| $C(T, e)$ | der Kreis, der entsteht, wenn man die Leitung $e$ zu $T$ hinzulegt |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/greedy-austausch-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
 **Gegeben** ein Graph $G = (V, E)$ mit Kosten $c_e$ und optional einer Gradschranke $d$. **Gesucht** ein Spannbaum $T \subseteq E$ (zusammenhängend, kreisfrei, $|T| = |V| - 1$), der $\sum_{e \in T} c_e$ minimiert, mit $\deg_T(v) \le d$ für alle $v$, falls eine Schranke gilt.
